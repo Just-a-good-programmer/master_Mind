@@ -37,17 +37,17 @@ def show_Secret(mystery):
 
 def play_Mastermind():
     print("Welcome to Mastermind!")
-    print("Guess the 4-digit code. Each digit is from 1 to 6. You have 10 attempts.")
+    print("Guess the 4-digit code. The colors are: red, blue, yellow, green, purple and orange. \n"
+          "To make a guess you have to separate the four colors with a space. You have 10 attempts.")
     secret_Code = generate_Code()
-    COLORS = {"rood": "1", "blauw": "2", "geel": "3", "groen": "4", "paars": "5", "oranje": "6"}
+    COLORS = {"red": "1", "blue": "2", "yellow": "3", "green": "4", "purple": "5", "orange": "6"}
     attempts = 10
 
     for attempt in range(1, attempts + 1):
         guess = ""
-        guess = guess.lower()
         valid_Guess = False
         while not valid_Guess:
-            guess = input(f"Attempt {attempt}: ").split(" ").lower
+            guess = input(f"Attempt {attempt}: ").lower().strip(" ")
             for color, digit in COLORS.items():
                 guess = guess.replace(color, digit)
             guess = guess.replace(" ", "")
